@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+
+    public static bool isStopped = false;
     public enum MoveType { WayPoint, Lookat }
     [SerializeField] MoveType moveType = MoveType.WayPoint;
 
@@ -36,6 +38,9 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+
+        if (isStopped) return;
+
         switch (moveType)
         {
             case MoveType.WayPoint: MoveWayPoint(); break;
